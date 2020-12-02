@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "node build.js --exec --server --watch",
     "build": "node build.js --exec",
-    "deployDev": "ENV=dev node deploy.js"
+    "deployDev": "ENV=dev node deploy.js",
+    "deployDev4Win": "set ENV=dev && node deploy.js"
   },
   "author": "",
   "license": "ISC",
