@@ -93,7 +93,6 @@ supportEventList.forEach(on => {
         }
     })
 });
-console.log(eventsHandler);
 
 const createComponent = (tpl, dataAndClass, events) => {
     const html = doT.template(tpl)(dataAndClass);
