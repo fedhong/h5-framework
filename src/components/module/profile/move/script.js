@@ -4,14 +4,14 @@ import style from './style.less';
 
 const Move = (props) => {
 
+    const data = {};
+
     function defaultEvent(e) {
         e.preventDefault();
     }
     let canMove = false;
     let oW;
     let oH;
-
-    const data = {};
     const events = {
         touchstart: function (e) {
             canMove = true;
