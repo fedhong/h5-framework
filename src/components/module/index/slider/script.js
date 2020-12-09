@@ -2,18 +2,19 @@ import createComponent from '../../../../framework/createComponent';
 import tpl from './dom.html';
 import style from './style.less';
 
-const List = (props) => {
+const Slider = (props) => {
     const data = {
-        
+
     }
 
     let curPage = 1;
     let limit = 100;
-    let startOffset = 0;
+    let startTranslateX = 0;
+    let endTranslateX = 0;
 
     let canMove = false;
-    let startX;
     let moveObj;
+    let offsetX;
 
     function defaultEvent(e) {
         e.preventDefault();
@@ -31,37 +32,30 @@ const List = (props) => {
             document.addEventListener("touchmove", defaultEvent, false);
 
             const transform = window.getComputedStyle(moveObj).transform;
-            const offset = transform != 'none' ? +transform.split(',')[4] : 0;
-            startOffset = offset;
+            startTranslateX = transform != 'none' ? +transform.split(',')[4] : 0;
 
             const touches = e.touches ? e.touches[0] : e;
-            startX = touches.clientX - offset;
+            offsetX = touches.clientX - startTranslateX;
 
             moveObj.style.transition = '';
         },
         touchmove: function (e) {
             if (canMove) {
                 const touches = e.touches ? e.touches[0] : e;
-                let l = touches.clientX - startX;
+                endTranslateX = touches.clientX - offsetX;
                 //TODO 边界判断
-                moveObj.style.transform = `translateX(${l}px)`;
+                moveObj.style.transform = `translateX(${endTranslateX}px)`;
             }
         },
         touchend: function (e) {
             canMove = false;
             document.removeEventListener("touchmove", defaultEvent, false);
 
-
-            const transform = window.getComputedStyle(moveObj).transform;
-            const offset = transform != 'none' ? +transform.split(',')[4] : 0;
-            console.log(startOffset);
-            console.log(offset);
-            
-            if (Math.abs(offset - startOffset) > limit) {
-                if (offset < startOffset && curPage < 4) {//TODO 3页（总页数计算）
+            if (Math.abs(endTranslateX - startTranslateX) > limit) {
+                if (endTranslateX < startTranslateX && curPage < 4) {//TODO 3页（总页数计算）
                     curPage = curPage + 1;
                 }
-                if (offset > startOffset && curPage > 1) {
+                if (endTranslateX > startTranslateX && curPage > 1) {
                     curPage = curPage - 1;
                 }
             }
@@ -75,4 +69,4 @@ const List = (props) => {
     return component;
 }
 
-export default List;
+export default Slider;
