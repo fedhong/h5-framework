@@ -15,6 +15,7 @@ const Slider = (props) => {
     let canMove = false;
     let moveObj;
     let offsetX;
+    let startX;
 
     function defaultEvent(e) {
         e.preventDefault();
@@ -36,6 +37,7 @@ const Slider = (props) => {
 
             const touches = e.touches ? e.touches[0] : e;
             offsetX = touches.clientX - startTranslateX;
+            startX = touches.clientX;
 
             moveObj.style.transition = '';
         },
@@ -43,7 +45,15 @@ const Slider = (props) => {
             if (canMove) {
                 const touches = e.touches ? e.touches[0] : e;
                 endTranslateX = touches.clientX - offsetX;
-                //TODO 边界判断
+
+                if (touches.clientX > startX && curPage === 1) {
+                    //向右滑
+                    return;
+                } else if (touches.clientX < startX && curPage === 4) {
+                    //向左滑
+                    return;
+                }
+
                 moveObj.style.transform = `translateX(${endTranslateX}px)`;
             }
         },
