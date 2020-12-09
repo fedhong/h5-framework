@@ -52,7 +52,7 @@ const Slider = (props) => {
             document.removeEventListener("touchmove", defaultEvent, false);
 
             if (Math.abs(endTranslateX - startTranslateX) > limit) {
-                if (endTranslateX < startTranslateX && curPage < 4) {//TODO 3页（总页数计算）
+                if (endTranslateX < startTranslateX && curPage < 4) {//TODO 总页数计算
                     curPage = curPage + 1;
                 }
                 if (endTranslateX > startTranslateX && curPage > 1) {
