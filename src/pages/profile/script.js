@@ -5,6 +5,11 @@ import Footer from '../../components/common/footer/script';
 import tpl from './dom.html';
 import style from './style.less';
 
+import createCookie from '../../framework/createCookie';
+const Cookie = createCookie();
+Cookie.set('test', { "a": "aaaa", "b": 1232 });
+console.log(Cookie.get('test'));
+
 const header = Header({ data: { name: 'Fedhong' } });
 const footer = Footer();
 

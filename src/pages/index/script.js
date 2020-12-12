@@ -2,7 +2,7 @@ import createComponent from '../../framework/createComponent';
 import Header from '../../components/common/header/script';
 import Footer from '../../components/common/footer/script';
 import List from '../../components/module/index/list/script'
-import Slider from '../../components/module/index/slider/script'
+import Slider from '../../components/module/index/slider/script';
 import tpl from './dom.html';
 
 const header = Header({ data: { name: 'Fedhong' } });
@@ -13,7 +13,7 @@ const slider = Slider();
 
 const Index = (props) => {
     const data = {
-        header,        
+        header,
         list,
         slider,
         footer
