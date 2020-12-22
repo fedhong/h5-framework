@@ -1,4 +1,4 @@
-import createComponent from '../../../framework/createComponent';
+import createComponent from '@framework/createComponent';
 import tpl from './dom.html';
 import style from './style.less';
 

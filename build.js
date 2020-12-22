@@ -1,6 +1,7 @@
 const rollup = require('rollup');
 const path = require('path');
 const cleaner = require('rollup-plugin-cleaner');
+const alias = require('rollup-plugin-alias');
 const html = require('rollup-plugin-html');
 const html2 = require('rollup-plugin-html2');
 const { terser } = require('rollup-plugin-terser');
@@ -30,6 +31,14 @@ const config = {
         cleaner({
             targets: [
                 './build/'
+            ]
+        }),
+        alias({
+            resolve: ['.js'],
+            entries: [
+                { find: '@components', replacement: path.resolve('src/components') },
+                { find: '@framework', replacement: path.resolve('src/framework') },
+                { find: '@router', replacement: path.resolve('src/router') },
             ]
         }),
         html({

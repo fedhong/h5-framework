@@ -1,4 +1,4 @@
-import createComponent from '../../../../framework/createComponent';
+import createComponent from '@framework/createComponent';
 import tpl from './dom.html';
 import style from './style.less';
 
@@ -17,7 +17,7 @@ const Li = (props) => {
         }
     };
 
-    const component = createComponent(tpl, { data, style }, events);    
+    const component = createComponent(tpl, { data, style }, events);
     return component;
 }
 

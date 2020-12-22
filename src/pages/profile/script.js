@@ -1,11 +1,12 @@
-import createComponent from '../../framework/createComponent';
-import Header from '../../components/common/header/script';
-import Move from '../../components/module/profile/move/script'
-import Footer from '../../components/common/footer/script';
+import createComponent from '@framework/createComponent';
+import Header from '@components/common/header/script';
+import Move from '@components/module/profile/move/script'
+import Footer from '@components/common/footer/script';
+import createCookie from '@framework/createCookie';
+
 import tpl from './dom.html';
 import style from './style.less';
 
-import createCookie from '../../framework/createCookie';
 const Cookie = createCookie();
 Cookie.set('test', { "a": "aaaa", "b": 1232 });
 console.log(Cookie.get('test'));
